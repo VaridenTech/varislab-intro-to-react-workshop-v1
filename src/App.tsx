@@ -1,16 +1,17 @@
-import logo from "./assets/logo.svg";
+import { Route, Routes } from "react-router";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
+import RecipesPage from "./pages/RecipesPage";
 
 export default function App() {
   return (
-    <div className="welcome">
-      <div className="welcome__card">
-        <img className="welcome__logo" src={logo} alt="" />
-        <h1 className="welcome__title">Aroi is ready</h1>
-        <p className="welcome__text">
-          The starter project is running. Open <code>src/App.tsx</code> and
-          follow the lessons to turn this screen into a recipe finder.
-        </p>
-      </div>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="recipes" element={<RecipesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
