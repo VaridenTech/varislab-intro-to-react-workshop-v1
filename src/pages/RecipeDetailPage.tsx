@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import { ApiError, getJson } from "../api";
+import { ApiError } from "../api";
 import { EmptyState, ErrorMessage, Loading } from "../components/Status";
+import { useFetch } from "../hooks/useFetch";
 import type { Recipe } from "../types";
 
 export default function RecipeDetailPage() {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    async function loadRecipe() {
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const result = await getJson<Recipe>(`/recipes/${id}`);
-        setRecipe(result);
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error("Unknown error"));
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadRecipe();
-  }, [id]);
+  const { data: recipe, isLoading, error } = useFetch<Recipe>(`/recipes/${id}`);
 
   if (isLoading) {
     return <Loading label="Loading recipe…" />;

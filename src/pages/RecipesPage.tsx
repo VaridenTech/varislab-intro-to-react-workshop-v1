@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import { getJson } from "../api";
 import RecipeCard from "../components/RecipeCard";
 import SearchBar from "../components/SearchBar";
 import { EmptyState, ErrorMessage, Loading } from "../components/Status";
 import TagFilter from "../components/TagFilter";
+import { useFetch } from "../hooks/useFetch";
 import type { RecipesResponse } from "../types";
 
 function buildRecipesPath(query: string, tag: string) {
@@ -25,27 +24,7 @@ export default function RecipesPage() {
   const tag = searchParams.get("tag") ?? "";
   const path = buildRecipesPath(query, tag);
 
-  const [data, setData] = useState<RecipesResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    async function loadRecipes() {
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const result = await getJson<RecipesResponse>(path);
-        setData(result);
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error("Unknown error"));
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadRecipes();
-  }, [path]);
+  const { data, isLoading, error } = useFetch<RecipesResponse>(path);
 
   function handleSearch(nextQuery: string) {
     setSearchParams(nextQuery ? { q: nextQuery } : {});

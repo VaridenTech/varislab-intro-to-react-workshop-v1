@@ -10,8 +10,11 @@ export class ApiError extends Error {
   }
 }
 
-export async function getJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${API_URL}${path}`);
+export async function getJson<T>(
+  path: string,
+  signal?: AbortSignal,
+): Promise<T> {
+  const response = await fetch(`${API_URL}${path}`, { signal });
 
   if (!response.ok) {
     throw new ApiError(response.status);

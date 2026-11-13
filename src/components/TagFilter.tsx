@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getJson } from "../api";
+import { useFetch } from "../hooks/useFetch";
 
 type TagFilterProps = {
   selectedTag: string;
@@ -7,21 +6,8 @@ type TagFilterProps = {
 };
 
 export default function TagFilter({ selectedTag, onSelect }: TagFilterProps) {
-  const [tags, setTags] = useState<string[]>([]);
-
-  useEffect(() => {
-    async function loadTags() {
-      try {
-        const result = await getJson<string[]>("/recipes/tags");
-        setTags(result);
-      } catch {
-        // The filter is optional: without tags the page still works.
-        setTags([]);
-      }
-    }
-
-    loadTags();
-  }, []);
+  // The filter is optional: if the tags fail to load, only "All" is shown.
+  const { data: tags } = useFetch<string[]>("/recipes/tags");
 
   return (
     <div className="tag-filter" role="group" aria-label="Filter by tag">
@@ -34,7 +20,7 @@ export default function TagFilter({ selectedTag, onSelect }: TagFilterProps) {
         All
       </button>
 
-      {tags.map((tag) => (
+      {tags?.map((tag) => (
         <button
           key={tag}
           type="button"
