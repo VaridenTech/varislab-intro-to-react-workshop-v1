@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400">
+  <!-- table -->
+  <ellipse cx="240" cy="330" rx="220" ry="46" fill="#f6dcc2" />
+  <!-- placemat -->
+  <ellipse cx="240" cy="318" rx="170" ry="30" fill="#2f5d50" opacity="0.18" />
+  <!-- steam -->
+  <g fill="none" stroke="#e4572e" stroke-width="7" stroke-linecap="round" opacity="0.75">
+    <path d="M190 80c-16 22 16 34 0 58" />
+    <path d="M240 56c-16 24 16 38 0 64" />
+    <path d="M290 80c-16 22 16 34 0 58" />
+  </g>
+  <!-- bowl contents -->
+  <ellipse cx="240" cy="190" rx="138" ry="30" fill="#f4a259" />
+  <circle cx="190" cy="184" r="16" fill="#e4572e" />
+  <circle cx="190" cy="184" r="7" fill="#f8c9b7" />
+  <circle cx="284" cy="180" r="18" fill="#fff8f0" />
+  <circle cx="284" cy="180" r="8" fill="#f2c14e" />
+  <path d="M222 176c10-14 26-14 36 0" fill="none" stroke="#2f5d50" stroke-width="8" stroke-linecap="round" />
+  <path d="M146 192c20 8 40 8 60 2M300 198c16 2 30 0 44-6" fill="none" stroke="#fff8f0" stroke-width="5" stroke-linecap="round" />
+  <!-- bowl -->
+  <path d="M96 190h288c0 78-58 132-144 132S96 268 96 190z" fill="#fff8f0" stroke="#2b2118" stroke-width="5" />
+  <path d="M130 232c14 36 46 60 88 68" fill="none" stroke="#f6dcc2" stroke-width="9" stroke-linecap="round" />
+  <rect x="196" y="318" width="88" height="14" rx="7" fill="#fff8f0" stroke="#2b2118" stroke-width="5" />
+  <!-- chopsticks -->
+  <g stroke="#2b2118" stroke-width="7" stroke-linecap="round">
+    <path d="M318 176 L432 70" />
+    <path d="M338 184 L448 92" />
+  </g>
+  <!-- garnish on the table -->
+  <g>
+    <circle cx="70" cy="320" r="20" fill="#e4572e" />
+    <path d="M70 300c-2-10 6-14 12-14" fill="none" stroke="#2f5d50" stroke-width="5" stroke-linecap="round" />
+    <ellipse cx="412" cy="328" rx="26" ry="12" fill="#2f5d50" transform="rotate(-18 412 328)" />
+    <path d="M392 334l40-12" stroke="#fff8f0" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>
