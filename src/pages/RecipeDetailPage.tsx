@@ -74,8 +74,13 @@ export default function RecipeDetailPage() {
 
           <ul className="tag-list">
             {recipe.tags.map((tag) => (
-              <li key={tag} className="tag tag--static">
-                {tag}
+              <li key={tag}>
+                <Link
+                  to={`/recipes?tag=${encodeURIComponent(tag)}`}
+                  className="tag"
+                >
+                  {tag}
+                </Link>
               </li>
             ))}
           </ul>
