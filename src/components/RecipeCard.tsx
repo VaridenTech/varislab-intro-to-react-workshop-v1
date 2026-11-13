@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import type { Recipe } from "../types";
 import { formatTotalTime } from "../utils/formatTime";
+import FavoriteButton from "./FavoriteButton";
 
 type RecipeCardProps = {
   recipe: Recipe;
@@ -29,6 +30,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
           </ul>
         </div>
       </Link>
+      <FavoriteButton recipe={recipe} />
     </article>
   );
 }

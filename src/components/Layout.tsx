@@ -1,7 +1,10 @@
 import { Link, NavLink, Outlet } from "react-router";
 import logo from "../assets/logo.svg";
+import { useFavorites } from "../context/FavoritesContext";
 
 export default function Layout() {
+  const { favorites } = useFavorites();
+
   return (
     <div className="app">
       <header className="site-header">
@@ -17,6 +20,12 @@ export default function Layout() {
             </NavLink>
             <NavLink to="/recipes" className="site-nav__link">
               Recipes
+            </NavLink>
+            <NavLink to="/favorites" className="site-nav__link">
+              Favorites
+              {favorites.length > 0 && (
+                <span className="badge">{favorites.length}</span>
+              )}
             </NavLink>
           </nav>
         </div>

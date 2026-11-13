@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router";
 import { ApiError } from "../api";
+import FavoriteButton from "../components/FavoriteButton";
 import { EmptyState, ErrorMessage, Loading } from "../components/Status";
 import { useFetch } from "../hooks/useFetch";
 import type { Recipe } from "../types";
@@ -50,6 +51,7 @@ export default function RecipeDetailPage() {
           </p>
           <div className="recipe-detail__heading">
             <h1 className="recipe-detail__title">{recipe.name}</h1>
+            <FavoriteButton recipe={recipe} />
           </div>
 
           <ul className="tag-list">

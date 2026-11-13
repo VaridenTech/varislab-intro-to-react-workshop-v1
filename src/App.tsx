@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import Layout from "./components/Layout";
+import FavoritesPage from "./pages/FavoritesPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
@@ -12,6 +13,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="recipes" element={<RecipesPage />} />
         <Route path="recipes/:id" element={<RecipeDetailPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
