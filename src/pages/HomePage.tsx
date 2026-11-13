@@ -1,7 +1,17 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import heroArt from "../assets/hero.svg";
 
+// DummyJSON has 50 recipes, with ids from 1 to 50.
+const RECIPE_COUNT = 50;
+
 export default function HomePage() {
+  const navigate = useNavigate();
+
+  function handleSurprise() {
+    const randomId = Math.floor(Math.random() * RECIPE_COUNT) + 1;
+    navigate(`/recipes/${randomId}`);
+  }
+
   return (
     <section className="hero">
       <div>
@@ -17,6 +27,13 @@ export default function HomePage() {
           <Link to="/recipes" className="button button--primary">
             Browse recipes
           </Link>
+          <button
+            type="button"
+            className="button button--ghost"
+            onClick={handleSurprise}
+          >
+            Surprise me
+          </button>
         </div>
       </div>
       <img className="hero__art" src={heroArt} alt="" />
